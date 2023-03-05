@@ -7,11 +7,11 @@ SEPARATOR = "<SEPARATOR>"
 BUFFER_SIZE = 4096 # send 4096 bytes each time step
 
 # the ip address or hostname of the server, the receiver
-host = "172.20.10.2"
+host = "10.180.8.150"
 # the port, let's use 5001
 port = 5001
 # the name of file we want to send, make sure it exists
-filename = "input.txt"
+filename = "string.txt"
 # get the file size
 filesize = os.path.getsize(filename)
 
