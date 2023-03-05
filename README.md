@@ -22,17 +22,16 @@ To use our watch, you will need the following requirements:
     A Raspberry Pi 3B+ with a webcam (we are using the Raspberry Pi Camera v2.1)
     A miniature LCD display HAT (we are using the waveshare 1.3" LCD HAT with buttons)
     A power supply module (we are using the RPi UPS PowerPack with a 3.7V Li-polymer Battery)
-    A 3D printer or some cardboard (if you want to DIY the watch case)
 
 ## Installation
 
 To install the watch software, follow the steps below:
 
-    Clone the repository from Github: git clone https://github.com/Ancharm/WatchMyHa nds.git
+    Clone the repository from Github: git clone https://github.com/Ancharm/WatchMyHands.git
     Navigate to the 1.3inch_LCD_HAT_code/1.3inch_LCD_HAT_code/python path
     Run the main program: sudo python main.py [An additional button test program can be run with sudo python key_demo.py]
 
-## Usage
+## Usagex`
 
 Using our watch is simple and easy. To use it, follow the steps below:
 
