@@ -1,4 +1,4 @@
-# **Watch** My Hands - Empowering the community
+# <ins>Watch</ins> My Hands - Empowering the community
 
 Welcome to the documentation for our computer vision-based watch that can convert American Sign Language (ASL) to English and vice versa. This watch uses machine learning algorithms and computer vision techniques to interpret and translate sign language in real-time.
 
