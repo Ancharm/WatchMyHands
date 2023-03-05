@@ -10,7 +10,7 @@ while True:
     rightWidth =int(width*0.75)
     upperHeight = int(height*0.75)
     lowerHeight = int(height*0.4)
-    cropu1 = photo[lowerHeight,upperHeight,leftWidth:rightWidth]      # Middle part of the photo
+    cropu1 = photo[lowerHeight:upperHeight,leftWidth:rightWidth]      # Middle part of the photo
     
     
     gray = cv2.cvtColor(cropu1, cv2.COLOR_BGR2GRAY)
