@@ -13,7 +13,7 @@ Table of Contents:
 
 ## Overview
 
-Our watch is a wearable device that has a built-in camera and LCD screen to display the translated text. The machine learning model used in this watch has been trained on a large dataset of ASL gestures and corresponding English translations.
+Our watch is a wearable device that has a desktop camera and LCD screen to display the translated text. The machine learning model used in this watch has been trained on a large dataset of ASL alphabet and corresponding English translations.
 
 ## Requirements
 
