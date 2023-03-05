@@ -12,8 +12,9 @@ bus = 0
 device = 0
 
 # Display config
-row = 60
-rowLimit = 220
+lineNum = 1
+row = 55
+rowLimit = 195
 
 # 240x240 display with hardware SPI:
 disp = ST7789.ST7789(SPI.SpiDev(bus, device),RST, DC, BL)
@@ -25,51 +26,69 @@ disp.Init()
 disp.clear()
 
 # Create blank image for drawing.
-image1 = Image.new("RGB", (disp.width, disp.height), "BLACK")
-draw = ImageDraw.Draw(image1)
-largeFont = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 24)
+display = Image.new("RGB", (disp.width, disp.height), "BLACK")
+draw = ImageDraw.Draw(display)
+
+# Setting the fonts for the display
+largeFont = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 22)
 smallFont = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBoldOblique.ttf', 18)
+miniFont = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf', 12)
+startupLarge = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSansBold.ttf', 32)
+startupMini = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSansBold.ttf', 20)
 
-#print ("***draw line")
-#draw.line([(0,0),(240,0)], fill = "BLUE",width = 5)
-#draw.line([(240,0),(240,240)], fill = "BLUE",width = 5)
-#draw.line([(240,240),(0,240)], fill = "BLUE",width = 5)
-#draw.line([(0,240),(0,0)], fill = "BLUE",width = 5)
-print ("***draw rectangle")
-draw.rectangle([(0,0),(240,40)],fill = "WHITE")
+# Wonderful startup init thing
 
-print ("***draw text")
+draw.rectangle([(0,0),(240, 240)],fill = "BLACK")
 
-draw.text((15, 10), 'TRANSLATING... ', fill = "BLACK", font = largeFont, align = "center")
+draw.text((25, 60), 'Watch', fill = "WHITE", font = startupLarge, align = "left")
+disp.ShowImage(display,0,0)
+draw.text((50, 110), 'My', fill = "WHITE", font = startupLarge, align = "left")
+disp.ShowImage(display,0,0)
+draw.text((75, 160), 'Hands', fill = "WHITE", font = startupLarge, align = "left")
+disp.ShowImage(display,0,0)
+draw.text((185, 170), 'v0.3', fill = "BLUE", font = startupMini, align = "left")
+disp.ShowImage(display,0,0)
 
+time.sleep(2)
+
+draw.rectangle([(0,0),(240, 240)],fill = "BLACK")
+
+# Header
+print ("Drew header box")
+draw.rectangle([(0,0),(240,40)], fill = "WHITE")
+
+print ("Drew header text")
+draw.text((15, 10), ' Watch My Hands ', fill = "BLACK", font = largeFont, align = "center")
+
+print ("Drew footer box")
+draw.rectangle([(0, 220), (240, 240)], fill = "WHITE")
+
+print ("Drew footer text")
+draw.text((10, 225), time.strftime("| Date: %m/%d/%y | Time: %H:%M |"), fill = "BLUE", font = miniFont, align = "right")
+
+
+# Read from input.txt
 with open('input.txt') as f:
 
     for line in f.readlines():
 
+        print ("Read line: " + str(lineNum))
+
         if row == rowLimit:
 
-            row = 60
-            draw.rectangle([(0, 40), (240, 240)], fill = "BLACK")
+            row = 55
+            draw.rectangle([(0, 40), (240, 220)], fill = "BLACK")
 
         current = line.strip()
         draw.text((15, row), (current + " "), font = smallFont, align = "left")
 
         row += 20
+        lineNum += 1
 
+        disp.ShowImage(display,0,0)
         time.sleep(0.25)
 
-#draw.text((15, 60), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-#draw.text((15, 80), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-#draw.text((15, 100), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-#draw.text((15, 120), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-#draw.text((15, 140), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-#draw.text((15, 160), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-#draw.text((15, 180), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-#draw.text((15, 200), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-#draw.text((15, 220), '1234512345123451234 ', fill = "WHITE", font = smallFont, align = "left")
-
-disp.ShowImage(image1,0,0)
 time.sleep(3)
 
 #image = Image.open('pic.jpg')
-#disp.ShowImage(image,0,0)
+#disp.ShowImage(image, 0, 0)
