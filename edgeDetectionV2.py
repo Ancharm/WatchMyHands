@@ -5,9 +5,12 @@ while True:
     photo = cv2.flip(photo,1)       # Fliping the photo for mirror view
     width  = int(cap.get(3))  # float `width`
     height = int(cap.get(4))  # float `height
+    
     leftWidth =int(width*0.33)
     rightWidth =int(width*0.75)
-    cropu1 = photo[0:height,leftWidth:rightWidth]      # Middle part of the photo
+    upperHeight = int(height*0.75)
+    lowerHeight = int(height*0.4)
+    cropu1 = photo[lowerHeight,upperHeight,leftWidth:rightWidth]      # Middle part of the photo
     
     
     gray = cv2.cvtColor(cropu1, cv2.COLOR_BGR2GRAY)
