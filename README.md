@@ -31,7 +31,7 @@ To install the watch software, follow the steps below:
     Navigate to the 1.3inch_LCD_HAT_code/1.3inch_LCD_HAT_code/python path
     Run the main program: sudo python main.py [An additional button test program can be run with sudo python key_demo.py]
 
-## Usagex`
+## Usage
 
 Using our watch is simple and easy. To use it, follow the steps below:
 
