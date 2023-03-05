@@ -1,4 +1,4 @@
-# Watch My Hands - Empowering the community
+# **Watch** My Hands - Empowering the community
 
 Welcome to the documentation for our computer vision-based watch that can convert American Sign Language (ASL) to English and vice versa. This watch uses machine learning algorithms and computer vision techniques to interpret and translate sign language in real-time.
 
@@ -28,7 +28,7 @@ To use our watch, you will need the following requirements:
 
 To install the watch software, follow the steps below:
 
-    Clone the repository from Github: git clone https://github.com/Ancharm/WatchMyHands.git
+    Clone the repository from Github: git clone https://github.com/Ancharm/WatchMyHa nds.git
     Navigate to the 1.3inch_LCD_HAT_code/1.3inch_LCD_HAT_code/python path
     Run the main program: sudo python main.py [An additional button test program can be run with sudo python key_demo.py]
 
