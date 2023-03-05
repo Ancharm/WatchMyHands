@@ -39,17 +39,4 @@ Using our watch is simple and easy. To use it, follow the steps below:
     Point the camera towards the person signing
     The watch will automatically recognize the signs and display the corresponding text on the screen
     To translate from English to ASL, toggle to recognition mode to convert voice to text and display it on the screen
-    
-## Contributing
-
-We welcome contributions to our project. If you want to contribute, follow the steps below:
-
-    Fork the repository
-    Clone the forked repository to your local machine
-    Make your changes
-    Test your changes
-    Submit a pull request
-
-## License
-
-This project is licensed under the MIT License. You can find more information about the license in the LICENSE file in the project repository.
+  
