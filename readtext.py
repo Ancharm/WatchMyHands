@@ -12,9 +12,12 @@ bus = 0
 device = 0
 
 # Display config
+current = ""
 lineNum = 1
 row = 55
 rowLimit = 195
+charLim = 19
+charCounter = 0
 
 # 240x240 display with hardware SPI:
 disp = ST7789.ST7789(SPI.SpiDev(bus, device),RST, DC, BL)
@@ -40,17 +43,12 @@ startupMini = ImageFont.truetype('/usr/share/fonts/truetype/freefont/FreeSansBol
 
 draw.rectangle([(0,0),(240, 240)],fill = "BLACK")
 
-draw.text((25, 60), 'Watch', fill = "WHITE", font = startupLarge, align = "left")
-disp.ShowImage(display,0,0)
-draw.text((50, 110), 'My', fill = "WHITE", font = startupLarge, align = "left")
-disp.ShowImage(display,0,0)
-draw.text((75, 160), 'Hands', fill = "WHITE", font = startupLarge, align = "left")
-disp.ShowImage(display,0,0)
-draw.text((185, 170), 'v0.3', fill = "BLUE", font = startupMini, align = "left")
-disp.ShowImage(display,0,0)
+image = Image.open('pic.jpg')
+disp.ShowImage(image, 0, 0)
 
 time.sleep(2)
 
+# Reset plane
 draw.rectangle([(0,0),(240, 240)],fill = "BLACK")
 
 # Header
@@ -60,6 +58,7 @@ draw.rectangle([(0,0),(240,40)], fill = "WHITE")
 print ("Drew header text")
 draw.text((15, 10), ' Watch My Hands ', fill = "BLACK", font = largeFont, align = "center")
 
+#Footer
 print ("Drew footer box")
 draw.rectangle([(0, 220), (240, 240)], fill = "WHITE")
 
@@ -68,27 +67,34 @@ draw.text((10, 225), time.strftime("| Date: %m/%d/%y | Time: %H:%M |"), fill = "
 
 
 # Read from input.txt
-with open('input.txt') as f:
+with open('string.txt') as f:
 
     for line in f.readlines():
 
-        print ("Read line: " + str(lineNum))
+        line = line.strip()
+        arrList = line.split()
 
-        if row == rowLimit:
+        for i in range(len(arrList)):
 
-            row = 55
-            draw.rectangle([(0, 40), (240, 220)], fill = "BLACK")
+            current += arrList[i].strip()
 
-        current = line.strip()
-        draw.text((15, row), (current + " "), font = smallFont, align = "left")
+            if (len(current) > charLim):
 
-        row += 20
-        lineNum += 1
+                 row += 20
+                 current = arrList[i]
 
-        disp.ShowImage(display,0,0)
-        time.sleep(0.25)
+                 if row == rowLimit:
+
+                     row = 55
+                     draw.rectangle([(0, 40), (240, 220)], fill = "BLACK")
+
+
+            current += " "
+
+            draw.text((15, row), (current + " "), font = smallFont, align = "left")
+
+            disp.ShowImage(display,0,0)
+            time.sleep(0.25)
 
 time.sleep(3)
-
-#image = Image.open('pic.jpg')
-#disp.ShowImage(image, 0, 0)
+ 
